@@ -10,6 +10,8 @@ struct EnergyConfirmOverlay: View {
     let onKeepOriginal: () -> Void
     let onDismiss: () -> Void
 
+    @Environment(\.scenePhase) private var scenePhase
+
     @State private var countdown: Int = 5
     @State private var barProgress: Double = 1.0
     @State private var countdownTask: Task<Void, Never>?
@@ -148,6 +150,19 @@ struct EnergyConfirmOverlay: View {
         .transition(.opacity.combined(with: .scale(scale: 0.95, anchor: .center)))
         .onAppear { startCountdown() }
         .onDisappear { countdownTask?.cancel() }
+        // Pause countdown when app goes to background so the auto-start doesn't
+        // fire while the app is inactive — ActivityKit cannot start a Live Activity
+        // from the background, which would leave the session running with no widget.
+        .onChange(of: scenePhase) { _, phase in
+            switch phase {
+            case .background, .inactive:
+                countdownTask?.cancel()
+            case .active:
+                startCountdown()
+            @unknown default:
+                break
+            }
+        }
     }
 
     // MARK: - Countdown

@@ -30,10 +30,11 @@ struct FlowStateLiveActivityWidget: Widget {
                             .font(.system(size: 22, weight: .bold, design: .monospaced))
                             .foregroundStyle(widgetColor(context.state.phase.colorHex))
                     } else {
-                        Text(context.state.sessionEndDate, style: .timer)
-                            .font(.system(size: 22, weight: .bold, design: .monospaced))
-                            .foregroundStyle(widgetColor(context.state.phase.colorHex))
-                            .monospacedDigit()
+                        ClampedTimerText(
+                            endDate: context.state.sessionEndDate,
+                            font: .system(size: 22, weight: .bold, design: .monospaced),
+                            color: widgetColor(context.state.phase.colorHex)
+                        )
                     }
                 }
                 DynamicIslandExpandedRegion(.bottom) {
@@ -72,10 +73,11 @@ struct FlowStateLiveActivityWidget: Widget {
                         .font(.system(size: 12, weight: .bold, design: .monospaced))
                         .foregroundStyle(widgetColor(context.state.phase.colorHex))
                 } else {
-                    Text(context.state.sessionEndDate, style: .timer)
-                        .font(.system(size: 12, weight: .bold, design: .monospaced))
-                        .foregroundStyle(widgetColor(context.state.phase.colorHex))
-                        .monospacedDigit()
+                    ClampedTimerText(
+                        endDate: context.state.sessionEndDate,
+                        font: .system(size: 12, weight: .bold, design: .monospaced),
+                        color: widgetColor(context.state.phase.colorHex)
+                    )
                 }
             } minimal: {
                 // MARK: Dynamic Island — Minimal (when two activities compete)
@@ -126,17 +128,20 @@ private struct LockScreenView: View {
                     }
                 }
 
-                // Text(.timer) renders a self-updating countdown — works on lock screen
+                // ClampedTimerText renders a self-updating countdown — works on lock screen
                 // without the app needing to push per-second updates.
+                // Uses clamped helper to prevent count-up when sessionEndDate is in the past
+                // (race window between phase ending and isPaused:true update arriving).
                 if context.state.isPaused {
                     Text(context.state.pausedTimeString)
                         .font(.system(size: 28, weight: .bold, design: .monospaced))
                         .foregroundStyle(.white)
                 } else {
-                    Text(context.state.sessionEndDate, style: .timer)
-                        .font(.system(size: 28, weight: .bold, design: .monospaced))
-                        .foregroundStyle(.white)
-                        .monospacedDigit()
+                    ClampedTimerText(
+                        endDate: context.state.sessionEndDate,
+                        font: .system(size: 28, weight: .bold, design: .monospaced),
+                        color: .white
+                    )
                 }
 
                 if let task = context.state.taskName, !task.isEmpty {
@@ -189,6 +194,28 @@ private struct CircularProgressView: View {
                 .stroke(color, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
                 .rotationEffect(.degrees(-90))
         }
+    }
+}
+
+// MARK: - Clamped timer view (widget-private)
+// Text(date, style:.timer) counts DOWN while date is future, then counts UP once
+// the date passes — causing the "timer jumps up" bug when a phase ends.
+//
+// Fix: use Text(timerInterval:countsDown:true) instead.
+// This API clamps at "0:00" when the interval expires — it never reverses direction.
+// max(endDate, Date()) ensures a valid non-negative range when endDate is already past.
+// Available iOS 16.0+ — matches the widget extension deployment target.
+private struct ClampedTimerText: View {
+    let endDate: Date
+    let font: Font
+    let color: Color
+
+    var body: some View {
+        let safeEnd = max(endDate, Date())
+        Text(timerInterval: Date()...safeEnd, countsDown: true)
+            .font(font)
+            .foregroundStyle(color)
+            .monospacedDigit()
     }
 }
 

@@ -63,6 +63,8 @@ struct MainTabView: View {
     @Binding var selectedTab: AppTab
     @Environment(TimerViewModel.self) private var timerVM
     @Environment(SubscriptionService.self) private var subService
+    @Environment(AudioService.self) private var audioService
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -83,6 +85,17 @@ struct MainTabView: View {
         .onAppear { timerVM.isPremium = subService.isPremium }
         .onChange(of: subService.isPremium) { _, newValue in
             timerVM.isPremium = newValue
+        }
+        // Recover Live Activity if it was missed while app was in background
+        // (e.g. auto-start countdown fired while app was inactive).
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                timerVM.handleForeground()
+                // Bug fix: resume audio if app was killed/backgrounded during an active session
+                if timerVM.isRunning || timerVM.isPaused {
+                    audioService.resumeIfNeeded()
+                }
+            }
         }
     }
 }

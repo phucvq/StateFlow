@@ -39,7 +39,7 @@ struct FeedbackScreen: View {
     @State private var showMailFallbackAlert = false
     @State private var showSentConfirmation = false
 
-    private let recipientEmail = "phucvq2@gmail.com"
+    private let recipientEmail = "petphuc.vq@gmail.com"
 
     private var isMessageEmpty: Bool { message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
 

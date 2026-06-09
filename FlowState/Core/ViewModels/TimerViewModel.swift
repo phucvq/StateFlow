@@ -49,11 +49,15 @@ final class TimerViewModel {
 
     // MARK: - VM Persistence Keys
     private enum VMPersistKey {
-        static let phase          = "vm_phase"          // "work" | "break"
+        static let timerStateRaw  = "vm_timerStateRaw"  // full state string
+        static let phase          = "vm_phase"           // "work" | "break"
         static let sessionNumber  = "vm_sessionNumber"
         static let workDuration   = "vm_workDuration"
         static let breakDuration  = "vm_breakDuration"
         static let modeRaw        = "vm_mode"
+        static let isMicroMode    = "vm_isMicroMode"
+        static let taskName       = "vm_taskName"
+        static let totalSessions  = "vm_totalSessions"
     }
 
     // MARK: - Init
@@ -164,6 +168,7 @@ final class TimerViewModel {
             timerService.pause()
             timerState = .workPaused
             notificationService.cancelSessionNotifications()
+            saveVMState()
             if isPremium {
                 liveActivity.updateActivity(
                     phaseStartDate: Date(),
@@ -179,6 +184,7 @@ final class TimerViewModel {
             timerService.resume()
             timerState = .workRunning
             notificationService.scheduleSessionEnd(in: timerService.timeRemaining, taskName: currentTaskName)
+            saveVMState()
             if isPremium {
                 // phaseStartDate = now so sessionEndDate = now + remaining
                 liveActivity.updateActivity(
@@ -194,9 +200,11 @@ final class TimerViewModel {
         case .breakRunning:
             timerService.pause()
             timerState = .breakPaused
+            saveVMState()
         case .breakPaused:
             timerService.resume()
             timerState = .breakRunning
+            saveVMState()
         default:
             break
         }
@@ -210,6 +218,7 @@ final class TimerViewModel {
         currentSessionNumber += 1
         if isPremium { liveActivity.endActivity() }
         timerState = .workReady
+        saveVMState()
     }
 
     /// Skip the current work session early and go to break.
@@ -232,6 +241,7 @@ final class TimerViewModel {
             )
         }
         timerState = .breakReady
+        saveVMState()
     }
 
     /// Called when user taps "Start Session" on the workReady screen.
@@ -306,7 +316,25 @@ final class TimerViewModel {
                     taskName: currentTaskName
                 )
             }
+            // Mark micro session record as completed (same as normal path)
+            let microCtx = modelContext ?? storedModelContext
+            if let context = microCtx, let startDate = currentSessionStartDate {
+                let descriptor = FetchDescriptor<SessionRecord>(
+                    predicate: #Predicate { $0.statusRaw == "in_progress" }
+                )
+                if let records = try? context.fetch(descriptor),
+                   let record = records.first(where: { $0.startedAt >= startDate.addingTimeInterval(-5) }) {
+                    record.actualWorkDuration = workDuration
+                    record.status = .completed
+                    record.endedAt = Date()
+                    try? context.save()
+                }
+            }
+            // Update streak + widget (micro sessions count toward today's focus)
+            UserPreferences.shared.updateStreak()
+            syncWidgetData(addedMinutes: Int(workDuration / 60))
             timerState = .sessionComplete(totalSessions: currentSessionNumber)
+            saveVMState()
             return
         }
 
@@ -329,33 +357,44 @@ final class TimerViewModel {
         // Update streak
         UserPreferences.shared.updateStreak()
 
-        // Sync widget data (partial — AnalyticsViewModel fills weekly/all-time on next open)
-        var existing = WidgetDataWriter.read()
-        existing.currentStreak = UserPreferences.shared.streakCurrentDays
-        existing.longestStreak = max(UserPreferences.shared.streakLongestDays, UserPreferences.shared.streakCurrentDays)
-        existing.lastSessionTaskName = currentTaskName
-        existing.lastSessionDate = Date()
-        WidgetDataWriter.write(existing)
-
-        // Pause Live Activity display while user decides whether to break
-        if isPremium {
-            liveActivity.updateActivity(
-                phaseStartDate: Date(),
-                phaseDuration: breakDuration,
-                timerPhase: currentSessionNumber >= totalSessionsInSequence ? .longBreak : .shortBreak,
-                sessionMode: selectedMode.displayName,
-                taskName: currentTaskName,
-                isPaused: true,
-                pausedElapsed: 0
-            )
-        }
+        // Sync widget — increment focus time by this session's duration so the widget
+        // shows up-to-date data immediately without waiting for Analytics tab to open.
+        // AnalyticsViewModel.syncWidgetData() will do a full recalculate on next open.
+        syncWidgetData(addedMinutes: Int(workDuration / 60))
 
         // Don't auto-start break — wait for user confirmation
         if currentSessionNumber >= totalSessionsInSequence {
-            liveActivity.endActivity()
+            // Last session: pause then dismiss in a single atomic Task so there's no
+            // race between an updateActivity Task and a separate endActivity Task.
+            // Without this, the two racing Tasks can leave the widget in the old state
+            // (isPaused:false, sessionEndDate in the past) just before dismissal.
+            if isPremium {
+                liveActivity.pauseAndEnd(
+                    phaseDuration: workDuration,
+                    timerPhase: .work,
+                    sessionMode: selectedMode.displayName,
+                    taskName: currentTaskName
+                )
+            }
             timerState = .sessionComplete(totalSessions: currentSessionNumber)
+            saveVMState()
         } else {
+            // Intermediate session: freeze the display while user decides to start break.
+            // Widget uses ClampedTimerText so even if this update arrives late, it shows
+            // "0:00" rather than counting up.
+            if isPremium {
+                liveActivity.updateActivity(
+                    phaseStartDate: Date(),
+                    phaseDuration: breakDuration,
+                    timerPhase: currentSessionNumber >= totalSessionsInSequence ? .longBreak : .shortBreak,
+                    sessionMode: selectedMode.displayName,
+                    taskName: currentTaskName,
+                    isPaused: true,
+                    pausedElapsed: 0
+                )
+            }
             timerState = .breakReady
+            saveVMState()
         }
     }
 
@@ -395,6 +434,7 @@ final class TimerViewModel {
         timerService.start(duration: workDuration)
         notificationService.scheduleSessionEnd(in: workDuration, taskName: currentTaskName)
         haptics.sessionStart()
+        saveVMState()
 
         // End existing break activity and create a fresh work activity
         if isPremium {
@@ -429,8 +469,9 @@ final class TimerViewModel {
         notificationService.cancelSessionNotifications()
         currentSessionNumber += 1
         // Freeze Live Activity while user decides to start next session.
-        // Without this update, sessionEndDate is now in the past and
-        // Text(.timer) counts UP — the counting-up bug.
+        // The widget's ClampedTimerText acts as the primary guard against count-up
+        // during the async propagation window; this update ensures correct paused
+        // state once it arrives.
         if isPremium {
             liveActivity.updateActivity(
                 phaseStartDate: Date(),
@@ -444,6 +485,7 @@ final class TimerViewModel {
         }
         // Don't auto-start next work session — wait for user
         timerState = .workReady
+        saveVMState()
     }
 
     // MARK: - Timer Callbacks
@@ -508,6 +550,7 @@ final class TimerViewModel {
 
         // Increment usage counter
         UserPreferences.shared.microCommitmentUsedToday += 1
+        saveVMState()
     }
 
     func continueMicroCommitment(withDuration duration: TimeInterval) {
@@ -517,6 +560,7 @@ final class TimerViewModel {
         timeRemaining = duration
         timerService.start(duration: duration)
         notificationService.scheduleSessionEnd(in: duration, taskName: currentTaskName)
+        saveVMState()
         if isPremium {
             liveActivity.startActivity(
                 sessionId: UUID(),
@@ -535,35 +579,88 @@ final class TimerViewModel {
         return UserPreferences.shared.microCommitmentUsedToday < 3
     }
 
+    // MARK: - Widget Sync
+
+    /// Increments today's focus minutes (and all-time hours) by `addedMinutes` and
+    /// writes the result to the shared App Group UserDefaults so the home screen
+    /// widget refreshes immediately after every session — without waiting for the
+    /// Analytics tab to open (which does a full recalculate).
+    ///
+    /// AnalyticsViewModel.syncWidgetData() will overwrite with authoritative values
+    /// the next time the user opens Analytics, so any minor drift is self-correcting.
+    private func syncWidgetData(addedMinutes: Int) {
+        var data = WidgetDataWriter.read()
+        // Reset today's count if the stored date is not today
+        let today = Calendar.current.startOfDay(for: Date())
+        if let lastDate = data.lastSessionDate,
+           Calendar.current.startOfDay(for: lastDate) < today {
+            data.todayFocusMinutes = 0
+        }
+        data.todayFocusMinutes  += addedMinutes
+        data.weekFocusMinutes   += addedMinutes
+        data.totalFocusHours    += Double(addedMinutes) / 60.0
+        data.currentStreak       = UserPreferences.shared.streakCurrentDays
+        data.longestStreak       = max(UserPreferences.shared.streakLongestDays,
+                                       UserPreferences.shared.streakCurrentDays)
+        data.lastSessionTaskName = currentTaskName
+        data.lastSessionDate     = Date()
+        WidgetDataWriter.write(data)
+    }
+
     // MARK: - VM State Persistence (survives app kill in background)
+
+    private var persistedStateRaw: String {
+        switch timerState {
+        case .idle:                                  return "idle"
+        case .workRunning:                           return "workRunning"
+        case .workPaused:                            return "workPaused"
+        case .breakReady:                            return "breakReady"
+        case .breakRunning:                          return "breakRunning"
+        case .breakPaused:                           return "breakPaused"
+        case .workReady:                             return "workReady"
+        case .sessionComplete:                       return "sessionComplete"
+        }
+    }
 
     private func saveVMState() {
         let ud = UserDefaults.standard
-        ud.set(currentPhase == .work ? "work" : "break", forKey: VMPersistKey.phase)
-        ud.set(currentSessionNumber,                      forKey: VMPersistKey.sessionNumber)
-        ud.set(workDuration,                              forKey: VMPersistKey.workDuration)
-        ud.set(breakDuration,                             forKey: VMPersistKey.breakDuration)
-        ud.set(selectedMode.rawValue,                     forKey: VMPersistKey.modeRaw)
+        ud.set(persistedStateRaw,                         forKey: VMPersistKey.timerStateRaw)
+        ud.set(currentPhase == .work ? "work" : "break",  forKey: VMPersistKey.phase)
+        ud.set(currentSessionNumber,                       forKey: VMPersistKey.sessionNumber)
+        ud.set(workDuration,                               forKey: VMPersistKey.workDuration)
+        ud.set(breakDuration,                              forKey: VMPersistKey.breakDuration)
+        ud.set(selectedMode.rawValue,                      forKey: VMPersistKey.modeRaw)
+        ud.set(isMicroMode,                                forKey: VMPersistKey.isMicroMode)
+        ud.set(currentTaskName,                            forKey: VMPersistKey.taskName)
+        ud.set(totalSessionsInSequence,                    forKey: VMPersistKey.totalSessions)
     }
 
     private func clearVMState() {
         let ud = UserDefaults.standard
-        ud.removeObject(forKey: VMPersistKey.phase)
-        ud.removeObject(forKey: VMPersistKey.sessionNumber)
-        ud.removeObject(forKey: VMPersistKey.workDuration)
-        ud.removeObject(forKey: VMPersistKey.breakDuration)
-        ud.removeObject(forKey: VMPersistKey.modeRaw)
+        [VMPersistKey.timerStateRaw, VMPersistKey.phase, VMPersistKey.sessionNumber,
+         VMPersistKey.workDuration, VMPersistKey.breakDuration, VMPersistKey.modeRaw,
+         VMPersistKey.isMicroMode, VMPersistKey.taskName, VMPersistKey.totalSessions
+        ].forEach { ud.removeObject(forKey: $0) }
     }
 
     /// Called after `timerService.restoreState()` in `init()`.
-    /// If TimerService has an active timer, sync TimerViewModel state accordingly
-    /// so the UI doesn't fall back to the Home screen after an app kill.
+    /// Restores ALL TimerState cases — including breakReady / workReady / sessionComplete
+    /// (which have no running timer) and paused states.
+    ///
+    /// Key design decisions:
+    /// • Keyed on `timerStateRaw` (not just phase), so every state survives a kill.
+    /// • For workRunning/breakRunning with an expired timer (screen-off scenario), we
+    ///   derive the correct *next* state rather than calling handleWorkComplete, which
+    ///   requires a ModelContext we don't have at init time.  SwiftData cleanup (marking
+    ///   the in-progress record .completed) is deferred to the view via storedModelContext
+    ///   or the next time the user explicitly ends/starts a session.
     private func restoreVMState() {
         let ud = UserDefaults.standard
-        guard timerService.plannedDuration > 0,
-              timerService.timeRemaining > 0 else { return }
 
-        // Restore durations & mode so card/UI display is correct
+        guard let stateRaw = ud.string(forKey: VMPersistKey.timerStateRaw),
+              stateRaw != "idle" else { return }
+
+        // --- Restore shared context ---
         if let modeRaw = ud.string(forKey: VMPersistKey.modeRaw),
            let mode = SessionMode(rawValue: modeRaw) {
             selectedMode = mode
@@ -576,16 +673,76 @@ final class TimerViewModel {
         let savedSession = ud.integer(forKey: VMPersistKey.sessionNumber)
         if savedSession > 0 { currentSessionNumber = savedSession }
 
-        let phase = ud.string(forKey: VMPersistKey.phase) ?? "work"
-        timeRemaining = timerService.timeRemaining
-        progress      = timerService.progress
+        let savedTotal = ud.integer(forKey: VMPersistKey.totalSessions)
+        if savedTotal > 0 { totalSessionsInSequence = savedTotal }
 
-        if phase == "break" {
-            timerState   = .breakRunning
-            currentPhase = .shortBreak
-        } else {
-            timerState   = .workRunning
-            currentPhase = .work
+        isMicroMode     = ud.bool(forKey: VMPersistKey.isMicroMode)
+        currentTaskName = ud.string(forKey: VMPersistKey.taskName)
+
+        // --- Restore state ---
+        switch stateRaw {
+
+        // Static "waiting" states — no timer needed
+        case "breakReady":
+            timerState    = .breakReady
+            currentPhase  = .work
+            timeRemaining = 0
+            progress      = 1.0
+
+        case "workReady":
+            timerState    = .workReady
+            currentPhase  = currentSessionNumber >= totalSessionsInSequence ? .longBreak : .shortBreak
+            timeRemaining = 0
+            progress      = 1.0
+
+        case "sessionComplete":
+            timerState    = .sessionComplete(totalSessions: currentSessionNumber)
+            timeRemaining = 0
+            progress      = 1.0
+
+        // Active work timer
+        case "workRunning", "workPaused":
+            let tr = timerService.timeRemaining
+            if tr <= 0 {
+                // Timer expired while app was killed (screen-off scenario).
+                // Transition to the correct post-work state without calling
+                // handleWorkComplete (no ModelContext in init).
+                timerService.stop()
+                if isMicroMode || currentSessionNumber >= totalSessionsInSequence {
+                    timerState = .sessionComplete(totalSessions: currentSessionNumber)
+                } else {
+                    timerState = .breakReady
+                }
+                currentPhase  = .work
+                timeRemaining = 0
+                progress      = 1.0
+            } else {
+                timerState    = stateRaw == "workPaused" ? .workPaused : .workRunning
+                currentPhase  = .work
+                timeRemaining = tr
+                progress      = timerService.progress
+            }
+
+        // Active break timer
+        case "breakRunning", "breakPaused":
+            let tr = timerService.timeRemaining
+            if tr <= 0 {
+                // Break expired while killed — advance session counter and wait.
+                timerService.stop()
+                currentSessionNumber += 1
+                timerState    = .workReady
+                currentPhase  = .shortBreak
+                timeRemaining = 0
+                progress      = 1.0
+            } else {
+                timerState    = stateRaw == "breakPaused" ? .breakPaused : .breakRunning
+                currentPhase  = currentSessionNumber >= totalSessionsInSequence ? .longBreak : .shortBreak
+                timeRemaining = tr
+                progress      = timerService.progress
+            }
+
+        default:
+            break
         }
     }
 
@@ -607,6 +764,67 @@ final class TimerViewModel {
 
     func dismissSessionComplete() {
         resetToIdle()
+    }
+
+    // MARK: - Foreground Recovery
+
+    /// Call this when the app returns to the foreground (scenePhase → .active).
+    /// If a session or break is running but the Live Activity was never started
+    /// (e.g. auto-start fired while the app was in the background), we restart it here.
+    func handleForeground() {
+        guard isPremium else { return }
+        let liveActivityService = LiveActivityService.shared
+        // Only recover if there's no existing activity
+        guard !liveActivityService.hasActiveActivity else { return }
+
+        switch timerState {
+        case .workRunning, .workPaused:
+            let elapsed = timerService.elapsedTime
+            liveActivityService.startActivity(
+                sessionId: UUID(),
+                phaseStartDate: Date().addingTimeInterval(-elapsed),
+                phaseDuration: workDuration,
+                timerPhase: .work,
+                sessionMode: selectedMode.displayName,
+                taskName: currentTaskName
+            )
+            // If paused, immediately update to paused state
+            if timerState == .workPaused {
+                liveActivityService.updateActivity(
+                    phaseStartDate: Date(),
+                    phaseDuration: workDuration,
+                    timerPhase: .work,
+                    sessionMode: selectedMode.displayName,
+                    taskName: currentTaskName,
+                    isPaused: true,
+                    pausedElapsed: elapsed
+                )
+            }
+        case .breakRunning, .breakPaused:
+            let elapsed = timerService.elapsedTime
+            let phase: TimerPhase = currentSessionNumber >= totalSessionsInSequence ? .longBreak : .shortBreak
+            liveActivityService.startActivity(
+                sessionId: UUID(),
+                phaseStartDate: Date().addingTimeInterval(-elapsed),
+                phaseDuration: breakDuration,
+                timerPhase: phase,
+                sessionMode: selectedMode.displayName,
+                taskName: currentTaskName
+            )
+            if timerState == .breakPaused {
+                liveActivityService.updateActivity(
+                    phaseStartDate: Date(),
+                    phaseDuration: breakDuration,
+                    timerPhase: phase,
+                    sessionMode: selectedMode.displayName,
+                    taskName: currentTaskName,
+                    isPaused: true,
+                    pausedElapsed: elapsed
+                )
+            }
+        default:
+            break
+        }
     }
 
     // MARK: - Computed

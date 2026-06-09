@@ -4,7 +4,7 @@ import SwiftUI
 struct TermsOfUseScreen: View {
 
     private let effectiveDate = "June 1, 2025"
-    private let contactEmail  = "phucvq2@gmail.com"
+    private let contactEmail  = "petphuc.vq@gmail.com"
 
     var body: some View {
         ZStack {

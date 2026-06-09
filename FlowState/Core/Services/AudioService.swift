@@ -20,6 +20,7 @@ final class AudioService {
         currentSoundscapeId = UserPreferences.shared.selectedSoundscapeId
         volume = UserPreferences.shared.soundscapeVolume
         configureAudioSession()
+        setupInterruptionHandling()
     }
 
     // MARK: - Audio Session
@@ -32,6 +33,78 @@ final class AudioService {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             print("AudioService: Failed to configure audio session: \(error)")
+        }
+    }
+
+    // MARK: - Interruption Handling (Fix Bug 1: audio stops on screen off)
+    private func setupInterruptionHandling() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleInterruption),
+            name: AVAudioSession.interruptionNotification,
+            object: AVAudioSession.sharedInstance()
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleRouteChange),
+            name: AVAudioSession.routeChangeNotification,
+            object: AVAudioSession.sharedInstance()
+        )
+    }
+
+    @objc private func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let type = AVAudioSession.InterruptionType(rawValue: typeValue) else { return }
+
+        switch type {
+        case .began:
+            // Interruption started — audio already paused by system
+            isPlaying = false
+        case .ended:
+            // Resume only if interruption allows it and we were playing
+            guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+            if options.contains(.shouldResume) && currentSoundscapeId != "none" {
+                try? AVAudioSession.sharedInstance().setActive(true)
+                audioPlayer?.play()
+                isPlaying = true
+            }
+        @unknown default:
+            break
+        }
+    }
+
+    @objc private func handleRouteChange(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) else { return }
+
+        // Resume after route changes that don't signal intentional stop (e.g. unplugging headphones handled separately)
+        switch reason {
+        case .categoryChange:
+            if currentSoundscapeId != "none" && !(audioPlayer?.isPlaying ?? false) {
+                try? AVAudioSession.sharedInstance().setActive(true)
+                audioPlayer?.play()
+                isPlaying = audioPlayer?.isPlaying ?? false
+            }
+        default:
+            break
+        }
+    }
+
+    // MARK: - Resume (Fix Bug 2: audio doesn't resume after app reopen)
+    /// Call this when app returns to foreground during an active session.
+    func resumeIfNeeded() {
+        guard currentSoundscapeId != "none", !isPlaying else { return }
+        // Re-activate session in case it was deactivated while app was killed
+        try? AVAudioSession.sharedInstance().setActive(true)
+        if audioPlayer != nil {
+            audioPlayer?.play()
+            isPlaying = true
+        } else {
+            // Player was released — recreate it
+            play(soundscapeId: currentSoundscapeId, fadeIn: true)
         }
     }
 

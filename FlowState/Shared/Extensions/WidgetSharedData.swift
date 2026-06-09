@@ -3,10 +3,10 @@ import WidgetKit
 
 // MARK: - Shared container
 // App Group ID must match in both targets' entitlements:
-//   group.com.yourteam.FlowState   (replace with your real bundle prefix)
-// See setup guide in FlowState/Docs/WidgetSetup.md
+//   FlowState.entitlements + FlowStateWidgetsExtension.entitlements
+//   → com.apple.security.application-groups: group.com.phucvo.flowstate
 
-let kAppGroupID = "group.com.flowstate.app"
+let kAppGroupID = "group.com.phucvo.flowstate"
 
 // MARK: - Data model written by the main app, read by widgets
 

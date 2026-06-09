@@ -81,6 +81,13 @@ final class LiveActivityService {
     /// Use this instead of endActivity() when the phase has just completed —
     /// prevents the timer widget from counting *up* in the brief async window
     /// between session completion and dismissal.
+    /// Returns true if there is a currently active Live Activity.
+    /// Use this to detect when the activity was missed (e.g. started while app was in background).
+    var hasActiveActivity: Bool {
+        guard #available(iOS 16.2, *) else { return false }
+        return currentActivity() != nil
+    }
+
     func pauseAndEnd(
         phaseDuration: TimeInterval,
         timerPhase: TimerPhase,
