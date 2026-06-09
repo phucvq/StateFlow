@@ -1,0 +1,218 @@
+/* Time units */
+"unit.minute" = " phút";
+"unit.hour" = " giờ";
+
+/* Tabs */
+"tab.home" = "Tập trung";
+"tab.stats" = "Thống kê";
+"tab.settings" = "Cài đặt";
+
+/* Session Modes */
+"mode.standard" = "Tiêu chuẩn";
+"mode.deep_work" = "Tập trung sâu";
+"mode.quick_sprint" = "Nước rút nhanh";
+"mode.micro" = "Micro";
+"mode.ultra_short" = "Siêu ngắn";
+
+/* Energy Check-in */
+"energy.title" = "Năng lượng của bạn hôm nay?";
+"energy.subtitle" = "Chúng tôi sẽ điều chỉnh độ dài phiên làm việc phù hợp với trạng thái của bạn.";
+"energy.low" = "Thấp";
+"energy.medium" = "Vừa";
+"energy.high" = "Cao";
+"energy.low.desc" = "Mệt mỏi, phân tâm hoặc đang khởi động";
+"energy.medium.desc" = "Ổn định, tập trung, cảm thấy bình thường";
+"energy.high.desc" = "Minh mẫn, có động lực, đang vào guồng";
+"energy.select_first" = "Chọn mức năng lượng của bạn";
+"energy.start_with" = "Bắt đầu phiên %@";
+
+/* Home */
+"home.start" = "Bắt đầu phiên";
+"home.tagline" = "Sẵn sàng \nvào guồng chưa?";
+"home.today_minutes" = "%d phút tập trung hôm nay";
+"home.micro_start_prompt" = "Chưa sẵn sàng cho phiên đầy đủ?";
+"home.micro_start_action" = "Thử 2 phút";
+"greeting.morning" = "Chào buổi sáng ☀️";
+"greeting.afternoon" = "Chào buổi chiều 🌤";
+"greeting.evening" = "Chào buổi tối 🌙";
+
+/* Timer */
+"timer.phase.work" = "TẬP TRUNG";
+"timer.phase.short_break" = "NGHỈ NGẮN";
+"timer.phase.long_break" = "NGHỈ DÀI";
+"timer.session" = "Phiên";
+"timer.work" = "Làm việc";
+"timer.break" = "Nghỉ";
+"timer.end_session" = "Kết thúc phiên";
+"timer.remaining" = "còn lại";
+
+/* Break */
+"break.title" = "THỜI GIAN NGHỈ";
+"break.skip" = "Bỏ qua nghỉ giải lao";
+"break.extend" = "+5 phút nghỉ";
+"break.activity1" = "Đứng dậy và kéo giãn. Lưng bạn sẽ cảm ơn bạn. 🧘";
+"break.activity2" = "Nhìn vào vật cách 6m trong 20 giây. Nghỉ ngơi mắt. 👀";
+"break.activity3" = "Hít thở sâu 5 lần, thật chậm. Hoàn toàn thư giãn. 🌬";
+"break.activity4" = "Uống một ít nước. Giữ nước = giữ sự tập trung. 💧";
+"break.enforcement.gentle" = "Nhẹ nhàng";
+"break.enforcement.firm" = "Nghiêm túc";
+"break.enforcement.off" = "Tắt";
+
+/* Micro Commitment */
+"micro.title" = "Hai phút.\nChỉ cần bắt đầu.";
+"micro.subtitle" = "Cam kết 2 phút làm việc tập trung. Một khi đã bắt đầu, tiếp tục sẽ dễ hơn nhiều.";
+"micro.task_label" = "BẠN SẼ LÀM GÌ?";
+"micro.task_placeholder" = "VD: Mở tài liệu và viết một câu…";
+"micro.start_button" = "Bắt đầu 2 phút";
+"micro.use_regular" = "Dùng phiên thông thường";
+"micro.commitment_label" = "CAM KẾT CỦA BẠN";
+"micro.commitment_text" = "Tôi sẽ dành 2 phút để: %@";
+"micro.phase_label" = "CHẾ ĐỘ MICRO";
+"micro.encouragement" = "Bạn đang làm rất tốt. Tiếp tục nào!";
+"micro.complete_title" = "Bạn đã bắt đầu. 🌱";
+"micro.complete_subtitle" = "Đó là phần khó nhất rồi. Bạn có muốn giữ đà này không?";
+"micro.continue_with" = "Tiếp tục với %@ phút";
+"micro.stop_message" = "Như vậy là đủ rồi";
+
+/* Analytics */
+"analytics.title" = "Tiến độ của bạn";
+"analytics.subtitle" = "Theo dõi sự phát triển của bạn qua thời gian.";
+"analytics.weekly_title" = "TUẦN NÀY";
+"analytics.weekly_blur" = "Mở khóa thống kê 30 ngày với Premium";
+"analytics.no_data" = "Hoàn thành phiên để xem biểu đồ của bạn";
+"analytics.energy_title" = "NĂNG LƯỢNG THEO GIỜ (30 NGÀY)";
+"analytics.energy_no_data" = "Bật kiểm tra năng lượng để xem giờ tập trung đỉnh của bạn";
+"stats.today" = "HÔM NAY";
+"stats.this_week" = "TUẦN NÀY";
+"stats.streak" = "LIÊN TIẾP";
+"stats.longest_streak" = "KỶ LỤC";
+"stats.all_time" = "TỔNG CỘNG";
+"stats.completion" = "HOÀN THÀNH";
+"stats.sessions" = "Phiên";
+"stats.focused" = "Tập trung";
+"insight.best_hour" = "Bạn làm việc hiệu quả nhất vào khoảng %@. Hãy lên lịch công việc sâu vào thời điểm đó.";
+"insight.week_total" = "Bạn đã tập trung %d phút tuần này. Tuyệt vời!";
+"insight.week_change" = "Tuần này bạn tập trung %@ %d%% so với tuần trước. Tiếp tục phát huy!";
+
+/* Milestones */
+"milestone.7days.title" = "7 ngày liên tiếp! 🔥";
+"milestone.7days.subtitle" = "Bạn đã tập trung 7 ngày liên tục. Đang hình thành thói quen thực sự!";
+"milestone.30days.title" = "30 ngày liên tiếp! ⭐";
+"milestone.30days.subtitle" = "Một tháng tập trung nhất quán. Bạn không thể dừng lại được rồi.";
+"milestone.100hours.title" = "100 giờ tập trung! 🏆";
+"milestone.100hours.subtitle" = "100 giờ làm việc sâu đã được ghi lại. Đó là siêu năng lực.";
+
+/* Session Complete */
+"complete.title" = "Hoàn thành phiên!";
+"complete.subtitle" = "Bạn đã hoàn thành %d phiên. Bộ não cảm ơn bạn!";
+"complete.start_another" = "Bắt đầu phiên khác";
+"complete.done" = "Tôi xong rồi";
+
+/* Streak */
+"streak.days" = "%d ngày liên tiếp";
+"streak.reset_title" = "Chuỗi ngày bị gián đoạn";
+"streak.reset_message" = "Không sao cả — mọi chuỗi ngày đều bắt đầu từ ngày 1. Tiếp tục nhé!";
+
+/* Settings */
+"settings.section.focus" = "TẬP TRUNG";
+"settings.section.sensory" = "ÂM THANH & CẢM GIÁC";
+"settings.section.app" = "ỨNG DỤNG";
+"settings.energy_checkin" = "Kiểm tra năng lượng";
+"settings.energy_checkin.desc" = "Điều chỉnh độ dài phiên theo năng lượng";
+"settings.break_enforcement" = "Mức độ nghỉ giải lao";
+"settings.haptics" = "Phản hồi xúc giác";
+"settings.haptics.desc" = "Rung nhẹ tại các thời điểm quan trọng";
+"settings.sound_volume" = "Âm lượng âm thanh";
+"settings.language" = "Ngôn ngữ";
+"settings.about" = "Về FlowState";
+"settings.premium_active" = "FlowState Premium";
+"settings.premium_upgrade" = "Nâng cấp lên Premium";
+"settings.premium.desc" = "Truy cập không giới hạn mọi tính năng";
+"settings.premium_upgrade.desc" = "Mở khóa thống kê, âm thanh & nhiều hơn";
+
+/* Onboarding */
+"onboarding.next" = "Tiếp theo";
+"onboarding.get_started" = "Bắt đầu ngay";
+"onboarding.welcome.title" = "Chào mừng đến FlowState";
+"onboarding.welcome.tagline" = "Làm việc với não bộ, không chống lại nó.";
+"onboarding.welcome.desc" = "Đồng hồ tập trung được thiết kế cho cách não ADHD thực sự hoạt động — với cấu trúc nhẹ nhàng, linh hoạt thực sự và không có cảm giác tội lỗi.";
+"onboarding.challenge.title" = "Thách thức lớn nhất của bạn là gì?";
+"onboarding.challenge.subtitle" = "Chúng tôi sẽ cá nhân hóa trải nghiệm của bạn.";
+"onboarding.personalize.title" = "Đây là đề xuất của chúng tôi";
+"onboarding.personalize.for" = "Dựa trên: %@";
+"onboarding.recommended" = "ĐƯỢC ĐỀ XUẤT CHO BẠN";
+"onboarding.notif.title" = "Giữ vững trạng thái tập trung";
+"onboarding.notif.desc" = "Chúng tôi sẽ gửi thông báo nhẹ nhàng khi phiên của bạn kết thúc để bạn biết khi nào cần nghỉ ngơi.";
+"onboarding.notif.note" = "Chúng tôi cam kết giữ thông báo ở mức tối thiểu và có ý nghĩa.";
+
+/* Challenges */
+"challenge.time_blindness" = "Thời gian cứ biến mất";
+"challenge.procrastination" = "Khó bắt đầu";
+"challenge.deep_work" = "Cần các khối tập trung dài";
+"challenge.just_timer" = "Chỉ cần một đồng hồ đơn giản";
+
+/* Paywall */
+"paywall.title" = "Mở khóa tiềm năng tập trung của bạn";
+"paywall.subtitle" = "Mọi thứ bạn cần để xây dựng thói quen tập trung lâu dài.";
+"paywall.trial_cta" = "Dùng thử miễn phí 7 ngày";
+"paywall.monthly_cta" = "Mua Premium hàng tháng";
+"paywall.fine_print" = "Hủy bất cứ lúc nào. Tự động gia hạn.";
+"paywall.restore" = "Khôi phục mua hàng";
+"paywall.micro_limit" = "Đã đạt giới hạn ngày";
+"paywall.live_activity" = "Thanh Live Activity";
+"paywall.analytics" = "Thống kê 30 ngày";
+"paywall.streak" = "Bảo vệ chuỗi ngày";
+"paywallFeature1" = "Micro-commitment không giới hạn mỗi ngày";
+"paywallFeature2" = "Thanh tập trung Live Activity trên màn hình khóa";
+"paywallFeature3" = "Thống kê 30 ngày & mô hình năng lượng";
+"paywallFeature4" = "Ứng dụng đồng hành Apple Watch";
+"paywallFeature5" = "20+ âm thanh nền cao cấp";
+"paywallFeature6" = "Tiện ích màn hình chính";
+
+/* Plans */
+"plan.annual" = "Hàng năm";
+"plan.monthly" = "Hàng tháng";
+"plan.month" = "tháng";
+"plan.best_value" = "Tiết kiệm nhất";
+
+/* Common */
+"common.premium_required" = "Tính năng Premium";
+"common.upgrade" = "Nâng cấp";
+"common.change" = "Thay đổi";
+"common.skip" = "Bỏ qua";
+
+/* Soundscapes */
+"sound.picker_title" = "Chọn âm thanh nền";
+"sound.none" = "Không có";
+"sound.rain" = "Mưa";
+"sound.cafe" = "Quán cà phê";
+"sound.white_noise" = "Tiếng ồn trắng";
+"sound.brown_noise" = "Tiếng ồn nâu";
+"sound.forest" = "Rừng";
+"sound.lofi" = "Lo-Fi Beats";
+"sound.fireplace" = "Lò sưởi";
+"sound.ocean" = "Đại dương";
+"sound.library" = "Thư viện";
+"sound.deep_space" = "Vũ trụ";
+"sound.wind" = "Gió";
+
+/* Energy Confirm Overlay */
+"energy.confirm.continue" = "Tiếp tục →";
+"energy.confirm.suggested" = "FlowState đề xuất";
+"energy.confirm.full_session" = "Phiên đầy đủ 💪";
+"energy.confirm.instead" = "thay vì";
+"energy.confirm.auto_start" = "Tự động bắt đầu sau %ds";
+"energy.confirm.start" = "Bắt đầu %@";
+"energy.confirm.keep_original" = "Giữ nguyên %@";
+
+/* Mode Selector */
+"mode_selector.title" = "Chọn chế độ";
+
+/* Notifications */
+"notif.session_end.title" = "Đến giờ nghỉ rồi! ☕";
+"notif.session_end.body" = "Bạn đã hoàn thành một phiên tập trung. Tuyệt vời!";
+"notif.session_end.body_task" = "Xong \"%@\". Hãy nghỉ ngơi xứng đáng nhé.";
+"notif.break_reminder.title" = "Sắp hết giờ nghỉ";
+"notif.break_reminder.body" = "Bạn đã nghỉ %d phút. Sẵn sàng quay lại chưa?";
+"notif.break_end.title" = "Hết giờ nghỉ! 💪";
+"notif.break_end.body" = "Đã đến lúc quay lại làm việc. Cố lên nào!";

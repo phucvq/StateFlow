@@ -1,0 +1,829 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1000001 /* FlowStateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001 /* FlowStateApp.swift */; };
+		A1000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000002 /* ContentView.swift */; };
+		A1000003 /* SessionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000003 /* SessionRecord.swift */; };
+		A1000004 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000004 /* UserPreferences.swift */; };
+		A1000005 /* EnergyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000005 /* EnergyLog.swift */; };
+		A1000006 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000006 /* Enums.swift */; };
+		A1000007 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000007 /* TimerViewModel.swift */; };
+		A1000008 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000008 /* HomeViewModel.swift */; };
+		A1000009 /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000009 /* AnalyticsViewModel.swift */; };
+		A1000010 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000010 /* TimerService.swift */; };
+		A1000011 /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000011 /* AudioService.swift */; };
+		A1000012 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000012 /* NotificationService.swift */; };
+		A1000013 /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000013 /* SubscriptionService.swift */; };
+		A1000014 /* HapticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000014 /* HapticService.swift */; };
+		A1000015 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000015 /* HomeScreen.swift */; };
+		A1000016 /* TimerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000016 /* TimerScreen.swift */; };
+		A1000017 /* EnergyCheckinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000017 /* EnergyCheckinView.swift */; };
+		A1000018 /* MicroCommitmentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000018 /* MicroCommitmentScreen.swift */; };
+		A1000019 /* MicroTimerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000019 /* MicroTimerScreen.swift */; };
+		A1000020 /* MicroCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000020 /* MicroCompleteView.swift */; };
+		A1000021 /* AnalyticsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000021 /* AnalyticsScreen.swift */; };
+		A1000022 /* SoundscapePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000022 /* SoundscapePickerView.swift */; };
+		A1000023 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000023 /* SettingsScreen.swift */; };
+		A1000024 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000024 /* OnboardingScreen.swift */; };
+		A1000025 /* PaywallScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000025 /* PaywallScreen.swift */; };
+		A1000026 /* TimerRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000026 /* TimerRingView.swift */; };
+		A1000027 /* StreakBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000027 /* StreakBadgeView.swift */; };
+		A1000028 /* SessionModeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000028 /* SessionModeCardView.swift */; };
+		A1000029 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000029 /* PrimaryButton.swift */; };
+		A1000030 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000030 /* AppColors.swift */; };
+		A1000031 /* AppTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000031 /* AppTypography.swift */; };
+		A1000032 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000032 /* Date+Extensions.swift */; };
+		A1000033 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000033 /* TimeInterval+Extensions.swift */; };
+		A1000034 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000034 /* LocalizationManager.swift */; };
+		A1000035 /* BreakScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000035 /* BreakScreen.swift */; };
+		A1000036 /* SessionCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000036 /* SessionCompleteView.swift */; };
+		A1000037 /* SessionModePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000037 /* SessionModePickerView.swift */; };
+		A1000040 /* ActivityPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000040 /* ActivityPhase.swift */; };
+		A1000041 /* FlowStateActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000041 /* FlowStateActivityAttributes.swift */; };
+		A1000042 /* LiveActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000042 /* LiveActivityService.swift */; };
+		A1000043 /* WidgetSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000043 /* WidgetSharedData.swift */; };
+		A1000050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3000005 /* Assets.xcassets */; };
+		A1000051 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3000010 /* Localizable.strings */; };
+		F326F2C32FD643220095EF94 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F326F2C22FD643220095EF94 /* AboutScreen.swift */; };
+		F3BB58AA2FD7D9730091F8DE /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BB58A92FD7D9730091F8DE /* SplashScreen.swift */; };
+		F3BB58AE2FD7E84A0091F8DE /* TermsOfUseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BB58AD2FD7E84A0091F8DE /* TermsOfUseScreen.swift */; };
+		F3BB58AF2FD7E84A0091F8DE /* FeedbackScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BB58AB2FD7E84A0091F8DE /* FeedbackScreen.swift */; };
+		F3BB58B02FD7E84A0091F8DE /* PrivacyPolicyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BB58AC2FD7E84A0091F8DE /* PrivacyPolicyScreen.swift */; };
+		F3D989A32FD5AC2A00F0FFD3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D989A22FD5AC2A00F0FFD3 /* WidgetKit.framework */; };
+		F3D989A52FD5AC2A00F0FFD3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D989A42FD5AC2A00F0FFD3 /* SwiftUI.framework */; };
+		F3D989B62FD5AC2B00F0FFD3 /* FlowStateWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3D989A02FD5AC2A00F0FFD3 /* FlowStateWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3D989C12FD5AE2600F0FFD3 /* FlowStateActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000041 /* FlowStateActivityAttributes.swift */; };
+		F3D989C22FD5AE3600F0FFD3 /* ActivityPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000040 /* ActivityPhase.swift */; };
+		F3D989C32FD5AE3600F0FFD3 /* WidgetSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000043 /* WidgetSharedData.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F3D989B42FD5AC2B00F0FFD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3D9899F2FD5AC2A00F0FFD3;
+			remoteInfo = FlowStateWidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F3D989B72FD5AC2B00F0FFD3 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F3D989B62FD5AC2B00F0FFD3 /* FlowStateWidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A2000001 /* FlowStateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowStateApp.swift; sourceTree = "<group>"; };
+		A2000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A2000003 /* SessionRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRecord.swift; sourceTree = "<group>"; };
+		A2000004 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		A2000005 /* EnergyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyLog.swift; sourceTree = "<group>"; };
+		A2000006 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		A2000007 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		A2000008 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A2000009 /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
+		A2000010 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
+		A2000011 /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
+		A2000012 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		A2000013 /* SubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
+		A2000014 /* HapticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticService.swift; sourceTree = "<group>"; };
+		A2000015 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		A2000016 /* TimerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerScreen.swift; sourceTree = "<group>"; };
+		A2000017 /* EnergyCheckinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyCheckinView.swift; sourceTree = "<group>"; };
+		A2000018 /* MicroCommitmentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroCommitmentScreen.swift; sourceTree = "<group>"; };
+		A2000019 /* MicroTimerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroTimerScreen.swift; sourceTree = "<group>"; };
+		A2000020 /* MicroCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroCompleteView.swift; sourceTree = "<group>"; };
+		A2000021 /* AnalyticsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsScreen.swift; sourceTree = "<group>"; };
+		A2000022 /* SoundscapePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundscapePickerView.swift; sourceTree = "<group>"; };
+		A2000023 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		A2000024 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
+		A2000025 /* PaywallScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallScreen.swift; sourceTree = "<group>"; };
+		A2000026 /* TimerRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRingView.swift; sourceTree = "<group>"; };
+		A2000027 /* StreakBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakBadgeView.swift; sourceTree = "<group>"; };
+		A2000028 /* SessionModeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModeCardView.swift; sourceTree = "<group>"; };
+		A2000029 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		A2000030 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		A2000031 /* AppTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTypography.swift; sourceTree = "<group>"; };
+		A2000032 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A2000033 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		A2000034 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		A2000035 /* BreakScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakScreen.swift; sourceTree = "<group>"; };
+		A2000036 /* SessionCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompleteView.swift; sourceTree = "<group>"; };
+		A2000037 /* SessionModePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModePickerView.swift; sourceTree = "<group>"; };
+		A2000040 /* ActivityPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPhase.swift; sourceTree = "<group>"; };
+		A2000041 /* FlowStateActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowStateActivityAttributes.swift; sourceTree = "<group>"; };
+		A2000042 /* LiveActivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityService.swift; sourceTree = "<group>"; };
+		A2000043 /* WidgetSharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSharedData.swift; sourceTree = "<group>"; };
+		A3000001 /* FlowState.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowState.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3000002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3000004 /* FlowState.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowState.entitlements; sourceTree = "<group>"; };
+		A3000005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3000006 /* FlowStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowStateTests.swift; sourceTree = "<group>"; };
+		A3000011 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A3000012 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F326F2C22FD643220095EF94 /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
+		F3BB58A92FD7D9730091F8DE /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		F3BB58AB2FD7E84A0091F8DE /* FeedbackScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackScreen.swift; sourceTree = "<group>"; };
+		F3BB58AC2FD7E84A0091F8DE /* PrivacyPolicyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyScreen.swift; sourceTree = "<group>"; };
+		F3BB58AD2FD7E84A0091F8DE /* TermsOfUseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseScreen.swift; sourceTree = "<group>"; };
+		F3D989A02FD5AC2A00F0FFD3 /* FlowStateWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FlowStateWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3D989A22FD5AC2A00F0FFD3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F3D989A42FD5AC2A00F0FFD3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		F3D989F82FD5BAE700F0FFD3 /* FlowStateWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlowStateWidgetsExtension.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F3D989BA2FD5AC2B00F0FFD3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F3D9899F2FD5AC2A00F0FFD3 /* FlowStateWidgetsExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F3D989A62FD5AC2A00F0FFD3 /* FlowStateWidgets */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F3D989BA2FD5AC2B00F0FFD3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = FlowStateWidgets; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3D9899D2FD5AC2A00F0FFD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3D989A52FD5AC2A00F0FFD3 /* SwiftUI.framework in Frameworks */,
+				F3D989A32FD5AC2A00F0FFD3 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5000000 = {
+			isa = PBXGroup;
+			children = (
+				F3D989F82FD5BAE700F0FFD3 /* FlowStateWidgetsExtension.entitlements */,
+				A5000001 /* FlowState */,
+				A5000099 /* FlowStateTests */,
+				F3D989A62FD5AC2A00F0FFD3 /* FlowStateWidgets */,
+				F3D989A12FD5AC2A00F0FFD3 /* Frameworks */,
+				A5000100 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5000001 /* FlowState */ = {
+			isa = PBXGroup;
+			children = (
+				A5000010 /* App */,
+				A5000020 /* Core */,
+				A5000040 /* Features */,
+				A5000080 /* Shared */,
+				A5000090 /* Resources */,
+				A3000010 /* Localizable.strings */,
+				A3000002 /* Info.plist */,
+				A3000004 /* FlowState.entitlements */,
+			);
+			path = FlowState;
+			sourceTree = "<group>";
+		};
+		A5000010 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A2000001 /* FlowStateApp.swift */,
+				A2000002 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A5000020 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A5000021 /* Models */,
+				A5000022 /* ViewModels */,
+				A5000023 /* Services */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A5000021 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2000006 /* Enums.swift */,
+				A2000040 /* ActivityPhase.swift */,
+				A2000041 /* FlowStateActivityAttributes.swift */,
+				A2000003 /* SessionRecord.swift */,
+				A2000004 /* UserPreferences.swift */,
+				A2000005 /* EnergyLog.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5000022 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A2000007 /* TimerViewModel.swift */,
+				A2000008 /* HomeViewModel.swift */,
+				A2000009 /* AnalyticsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A5000023 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A2000010 /* TimerService.swift */,
+				A2000011 /* AudioService.swift */,
+				A2000012 /* NotificationService.swift */,
+				A2000013 /* SubscriptionService.swift */,
+				A2000042 /* LiveActivityService.swift */,
+				A2000014 /* HapticService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A5000040 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				F3BB58AB2FD7E84A0091F8DE /* FeedbackScreen.swift */,
+				F3BB58AC2FD7E84A0091F8DE /* PrivacyPolicyScreen.swift */,
+				F3BB58AD2FD7E84A0091F8DE /* TermsOfUseScreen.swift */,
+				F3BB58A92FD7D9730091F8DE /* SplashScreen.swift */,
+				F326F2C22FD643220095EF94 /* AboutScreen.swift */,
+				A2000015 /* HomeScreen.swift */,
+				A2000016 /* TimerScreen.swift */,
+				A2000035 /* BreakScreen.swift */,
+				A2000036 /* SessionCompleteView.swift */,
+				A2000017 /* EnergyCheckinView.swift */,
+				A2000018 /* MicroCommitmentScreen.swift */,
+				A2000019 /* MicroTimerScreen.swift */,
+				A2000020 /* MicroCompleteView.swift */,
+				A2000021 /* AnalyticsScreen.swift */,
+				A2000022 /* SoundscapePickerView.swift */,
+				A2000023 /* SettingsScreen.swift */,
+				A2000024 /* OnboardingScreen.swift */,
+				A2000025 /* PaywallScreen.swift */,
+				A2000037 /* SessionModePickerView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A5000080 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A5000081 /* Components */,
+				A5000082 /* Extensions */,
+				A5000083 /* Theme */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A5000081 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A2000026 /* TimerRingView.swift */,
+				A2000027 /* StreakBadgeView.swift */,
+				A2000028 /* SessionModeCardView.swift */,
+				A2000029 /* PrimaryButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A5000082 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A2000032 /* Date+Extensions.swift */,
+				A2000033 /* TimeInterval+Extensions.swift */,
+				A2000034 /* LocalizationManager.swift */,
+				A2000043 /* WidgetSharedData.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A5000083 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				A2000030 /* AppColors.swift */,
+				A2000031 /* AppTypography.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		A5000090 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A3000005 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A5000099 /* FlowStateTests */ = {
+			isa = PBXGroup;
+			children = (
+				A3000006 /* FlowStateTests.swift */,
+			);
+			path = FlowStateTests;
+			sourceTree = "<group>";
+		};
+		A5000100 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3000001 /* FlowState.app */,
+				F3D989A02FD5AC2A00F0FFD3 /* FlowStateWidgetsExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F3D989A12FD5AC2A00F0FFD3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3D989A22FD5AC2A00F0FFD3 /* WidgetKit.framework */,
+				F3D989A42FD5AC2A00F0FFD3 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A6000001 /* FlowState */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7000001 /* Build configuration list for PBXNativeTarget "FlowState" */;
+			buildPhases = (
+				A8000001 /* Sources */,
+				A4000001 /* Frameworks */,
+				A8000002 /* Resources */,
+				F3D989B72FD5AC2B00F0FFD3 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3D989B52FD5AC2B00F0FFD3 /* PBXTargetDependency */,
+			);
+			name = FlowState;
+			productName = FlowState;
+			productReference = A3000001 /* FlowState.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F3D9899F2FD5AC2A00F0FFD3 /* FlowStateWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3D989BB2FD5AC2B00F0FFD3 /* Build configuration list for PBXNativeTarget "FlowStateWidgetsExtension" */;
+			buildPhases = (
+				F3D9899C2FD5AC2A00F0FFD3 /* Sources */,
+				F3D9899D2FD5AC2A00F0FFD3 /* Frameworks */,
+				F3D9899E2FD5AC2A00F0FFD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F3D989A62FD5AC2A00F0FFD3 /* FlowStateWidgets */,
+			);
+			name = FlowStateWidgetsExtension;
+			packageProductDependencies = (
+			);
+			productName = FlowStateWidgetsExtension;
+			productReference = F3D989A02FD5AC2A00F0FFD3 /* FlowStateWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A9000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					A6000001 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					F3D9899F2FD5AC2A00F0FFD3 = {
+						CreatedOnToolsVersion = 26.1;
+					};
+				};
+			};
+			buildConfigurationList = A7000002 /* Build configuration list for PBXProject "FlowState" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				vi,
+				Base,
+			);
+			mainGroup = A5000000;
+			productRefGroup = A5000100 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6000001 /* FlowState */,
+				F3D9899F2FD5AC2A00F0FFD3 /* FlowStateWidgetsExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A8000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000050 /* Assets.xcassets in Resources */,
+				A1000051 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3D9899E2FD5AC2A00F0FFD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A8000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000001 /* FlowStateApp.swift in Sources */,
+				A1000002 /* ContentView.swift in Sources */,
+				A1000003 /* SessionRecord.swift in Sources */,
+				A1000004 /* UserPreferences.swift in Sources */,
+				A1000005 /* EnergyLog.swift in Sources */,
+				F326F2C32FD643220095EF94 /* AboutScreen.swift in Sources */,
+				A1000006 /* Enums.swift in Sources */,
+				A1000040 /* ActivityPhase.swift in Sources */,
+				A1000041 /* FlowStateActivityAttributes.swift in Sources */,
+				A1000007 /* TimerViewModel.swift in Sources */,
+				A1000008 /* HomeViewModel.swift in Sources */,
+				A1000009 /* AnalyticsViewModel.swift in Sources */,
+				A1000010 /* TimerService.swift in Sources */,
+				A1000011 /* AudioService.swift in Sources */,
+				A1000012 /* NotificationService.swift in Sources */,
+				A1000013 /* SubscriptionService.swift in Sources */,
+				A1000042 /* LiveActivityService.swift in Sources */,
+				A1000014 /* HapticService.swift in Sources */,
+				A1000015 /* HomeScreen.swift in Sources */,
+				A1000016 /* TimerScreen.swift in Sources */,
+				A1000017 /* EnergyCheckinView.swift in Sources */,
+				A1000018 /* MicroCommitmentScreen.swift in Sources */,
+				A1000019 /* MicroTimerScreen.swift in Sources */,
+				A1000020 /* MicroCompleteView.swift in Sources */,
+				F3BB58AA2FD7D9730091F8DE /* SplashScreen.swift in Sources */,
+				A1000021 /* AnalyticsScreen.swift in Sources */,
+				A1000022 /* SoundscapePickerView.swift in Sources */,
+				A1000023 /* SettingsScreen.swift in Sources */,
+				A1000024 /* OnboardingScreen.swift in Sources */,
+				A1000025 /* PaywallScreen.swift in Sources */,
+				A1000026 /* TimerRingView.swift in Sources */,
+				A1000027 /* StreakBadgeView.swift in Sources */,
+				F3BB58AE2FD7E84A0091F8DE /* TermsOfUseScreen.swift in Sources */,
+				F3BB58AF2FD7E84A0091F8DE /* FeedbackScreen.swift in Sources */,
+				F3BB58B02FD7E84A0091F8DE /* PrivacyPolicyScreen.swift in Sources */,
+				A1000028 /* SessionModeCardView.swift in Sources */,
+				A1000029 /* PrimaryButton.swift in Sources */,
+				A1000030 /* AppColors.swift in Sources */,
+				A1000031 /* AppTypography.swift in Sources */,
+				A1000032 /* Date+Extensions.swift in Sources */,
+				A1000033 /* TimeInterval+Extensions.swift in Sources */,
+				A1000034 /* LocalizationManager.swift in Sources */,
+				A1000043 /* WidgetSharedData.swift in Sources */,
+				A1000035 /* BreakScreen.swift in Sources */,
+				A1000036 /* SessionCompleteView.swift in Sources */,
+				A1000037 /* SessionModePickerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3D9899C2FD5AC2A00F0FFD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3D989C22FD5AE3600F0FFD3 /* ActivityPhase.swift in Sources */,
+				F3D989C12FD5AE2600F0FFD3 /* FlowStateActivityAttributes.swift in Sources */,
+				F3D989C32FD5AE3600F0FFD3 /* WidgetSharedData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F3D989B52FD5AC2B00F0FFD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3D9899F2FD5AC2A00F0FFD3 /* FlowStateWidgetsExtension */;
+			targetProxy = F3D989B42FD5AC2B00F0FFD3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A3000010 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3000011 /* en */,
+				A3000012 /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A7000010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A7000011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A7000020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowState/FlowState.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSQMM2PH22;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FlowState/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phucvo.flowstate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A7000021 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlowState/FlowState.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSQMM2PH22;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FlowState/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phucvo.flowstate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F3D989B82FD5AC2B00F0FFD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = FlowStateWidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSQMM2PH22;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlowStateWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlowStateWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phucvo.flowstate.app.FlowStateWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F3D989B92FD5AC2B00F0FFD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = FlowStateWidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSQMM2PH22;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlowStateWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlowStateWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phucvo.flowstate.app.FlowStateWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7000001 /* Build configuration list for PBXNativeTarget "FlowState" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7000020 /* Debug */,
+				A7000021 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7000002 /* Build configuration list for PBXProject "FlowState" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7000010 /* Debug */,
+				A7000011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3D989BB2FD5AC2B00F0FFD3 /* Build configuration list for PBXNativeTarget "FlowStateWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3D989B82FD5AC2B00F0FFD3 /* Debug */,
+				F3D989B92FD5AC2B00F0FFD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A9000001 /* Project object */;
+}

@@ -1,0 +1,218 @@
+/* Time units */
+"unit.minute" = "m";
+"unit.hour" = "h";
+
+/* Tabs */
+"tab.home" = "Focus";
+"tab.stats" = "Stats";
+"tab.settings" = "Settings";
+
+/* Session Modes */
+"mode.standard" = "Standard";
+"mode.deep_work" = "Deep Work";
+"mode.quick_sprint" = "Quick Sprint";
+"mode.micro" = "Micro";
+"mode.ultra_short" = "Ultra Short";
+
+/* Energy Check-in */
+"energy.title" = "How's your energy?";
+"energy.subtitle" = "We'll adjust your session length to match your current state.";
+"energy.low" = "Low";
+"energy.medium" = "Medium";
+"energy.high" = "High";
+"energy.low.desc" = "Tired, scattered, or warming up";
+"energy.medium.desc" = "Steady, focused, feeling okay";
+"energy.high.desc" = "Sharp, motivated, in the zone";
+"energy.select_first" = "Select your energy level";
+"energy.start_with" = "Start %@ session";
+
+/* Home */
+"home.start" = "Start Session";
+"home.tagline" = "Ready to flow?";
+"home.today_minutes" = "%d min focused today";
+"home.micro_start_prompt" = "Not ready for a full session?";
+"home.micro_start_action" = "Try 2 minutes";
+"greeting.morning" = "Good morning ☀️";
+"greeting.afternoon" = "Good afternoon 🌤";
+"greeting.evening" = "Good evening 🌙";
+
+/* Timer */
+"timer.phase.work" = "FOCUS";
+"timer.phase.short_break" = "SHORT BREAK";
+"timer.phase.long_break" = "LONG BREAK";
+"timer.session" = "Session";
+"timer.work" = "Focus";
+"timer.break" = "Break";
+"timer.end_session" = "End Session";
+"timer.remaining" = "remaining";
+
+/* Break */
+"break.title" = "TAKE A BREAK";
+"break.skip" = "Skip Break";
+"break.extend" = "5 min break";
+"break.activity1" = "Stand up and stretch. Your back will thank you. 🧘";
+"break.activity2" = "Look at something 20 feet away for 20 seconds. Rest your eyes. 👀";
+"break.activity3" = "Take 5 slow, deep breaths. Fully reset. 🌬";
+"break.activity4" = "Drink some water. Hydration = clarity. 💧";
+"break.enforcement.gentle" = "Gentle";
+"break.enforcement.firm" = "Firm";
+"break.enforcement.off" = "Off";
+
+/* Micro Commitment */
+"micro.title" = "Two minutes.\nJust start.";
+"micro.subtitle" = "Commit to 2 minutes of focused work. Once you start, staying is easy.";
+"micro.task_label" = "WHAT WILL YOU WORK ON?";
+"micro.task_placeholder" = "e.g. Open the doc and write one sentence…";
+"micro.start_button" = "Start 2 Minutes";
+"micro.use_regular" = "Use regular session instead";
+"micro.commitment_label" = "YOUR COMMITMENT";
+"micro.commitment_text" = "I will spend 2 minutes on: %@";
+"micro.phase_label" = "MICRO MODE";
+"micro.encouragement" = "You're doing it. Keep going.";
+"micro.complete_title" = "You started. 🌱";
+"micro.complete_subtitle" = "That's the hardest part. Want to keep the momentum going?";
+"micro.continue_with" = "Continue with %@ min";
+"micro.stop_message" = "That's enough for now";
+
+/* Analytics */
+"analytics.title" = "Your Progress";
+"analytics.subtitle" = "Track how your focus grows over time.";
+"analytics.weekly_title" = "THIS WEEK";
+"analytics.weekly_blur" = "Unlock 30-day analytics with Premium";
+"analytics.no_data" = "Complete sessions to see your chart";
+"analytics.energy_title" = "ENERGY PATTERN (30 DAYS)";
+"analytics.energy_no_data" = "Enable energy check-in to see your peak focus hours";
+"stats.today" = "TODAY";
+"stats.this_week" = "THIS WEEK";
+"stats.streak" = "STREAK";
+"stats.longest_streak" = "BEST STREAK";
+"stats.all_time" = "ALL-TIME";
+"stats.completion" = "COMPLETION";
+"stats.sessions" = "Sessions";
+"stats.focused" = "Focused";
+"insight.best_hour" = "You're most productive around %@. Try scheduling deep work then.";
+"insight.week_total" = "You focused for %d minutes this week. Great work!";
+"insight.week_change" = "This week you focused %@ %d%% vs last week. Keep it up!";
+
+/* Milestones */
+"milestone.7days.title" = "7-Day Streak! 🔥";
+"milestone.7days.subtitle" = "You've focused 7 days in a row. Building a real habit!";
+"milestone.30days.title" = "30-Day Streak! ⭐";
+"milestone.30days.subtitle" = "One month of consistent focus. You're unstoppable.";
+"milestone.100hours.title" = "100 Focus Hours! 🏆";
+"milestone.100hours.subtitle" = "100 hours of deep work logged. That's a superpower.";
+
+/* Session Complete */
+"complete.title" = "Session complete!";
+"complete.subtitle" = "You finished %d session(s). Your brain thanks you.";
+"complete.start_another" = "Start Another Session";
+"complete.done" = "I'm done for now";
+
+/* Streak */
+"streak.days" = "%d day streak";
+"streak.reset_title" = "Streak reset";
+"streak.reset_message" = "No worries — every streak starts with day 1. Go again!";
+
+/* Settings */
+"settings.section.focus" = "FOCUS";
+"settings.section.sensory" = "SOUND & FEEL";
+"settings.section.app" = "APP";
+"settings.energy_checkin" = "Energy Check-in";
+"settings.energy_checkin.desc" = "Adjust session length to your energy";
+"settings.break_enforcement" = "Break Enforcement";
+"settings.haptics" = "Haptic Feedback";
+"settings.haptics.desc" = "Subtle vibrations at key moments";
+"settings.sound_volume" = "Sound Volume";
+"settings.language" = "Language";
+"settings.about" = "About FlowState";
+"settings.premium_active" = "FlowState Premium";
+"settings.premium_upgrade" = "Upgrade to Premium";
+"settings.premium.desc" = "Unlimited access to all features";
+"settings.premium_upgrade.desc" = "Unlock analytics, sounds & more";
+
+/* Onboarding */
+"onboarding.next" = "Next";
+"onboarding.get_started" = "Get Started";
+"onboarding.welcome.title" = "Welcome to FlowState";
+"onboarding.welcome.tagline" = "Work with your brain, not against it.";
+"onboarding.welcome.desc" = "A focus timer designed for the way ADHD brains actually work — with gentle structure, real flexibility, and zero guilt.";
+"onboarding.challenge.title" = "What's your biggest challenge?";
+"onboarding.challenge.subtitle" = "We'll personalize your experience.";
+"onboarding.personalize.title" = "Here's what we recommend";
+"onboarding.personalize.for" = "Based on: %@";
+"onboarding.recommended" = "RECOMMENDED FOR YOU";
+"onboarding.notif.title" = "Stay in the flow";
+"onboarding.notif.desc" = "We'll send a gentle notification when your session ends so you always know when to take a break.";
+"onboarding.notif.note" = "We promise to keep notifications minimal and meaningful.";
+
+/* Challenges */
+"challenge.time_blindness" = "Time just disappears";
+"challenge.procrastination" = "Hard to get started";
+"challenge.deep_work" = "Need long focus blocks";
+"challenge.just_timer" = "Just want a timer";
+
+/* Paywall */
+"paywall.title" = "Unlock your full focus potential";
+"paywall.subtitle" = "Everything you need to build a lasting focus habit.";
+"paywall.trial_cta" = "Start 7-Day Free Trial";
+"paywall.monthly_cta" = "Get Premium Monthly";
+"paywall.fine_print" = "Cancel anytime. Renews automatically.";
+"paywall.restore" = "Restore purchases";
+"paywall.micro_limit" = "Daily Limit Reached";
+"paywall.live_activity" = "Live Activity Bar";
+"paywall.analytics" = "30-Day Analytics";
+"paywall.streak" = "Streak Protection";
+"paywallFeature1" = "Unlimited micro-commitments per day";
+"paywallFeature2" = "Live Activity focus bar on lock screen";
+"paywallFeature3" = "30-day analytics & energy patterns";
+"paywallFeature4" = "Apple Watch companion app";
+"paywallFeature5" = "20+ premium soundscapes";
+"paywallFeature6" = "Home screen widgets";
+
+/* Plans */
+"plan.annual" = "Annual";
+"plan.monthly" = "Monthly";
+"plan.month" = "mo";
+"plan.best_value" = "Best Value";
+
+/* Common */
+"common.premium_required" = "Premium Feature";
+"common.upgrade" = "Upgrade";
+"common.change" = "Change";
+"common.skip" = "Skip";
+
+/* Soundscapes */
+"sound.picker_title" = "Choose a Soundscape";
+"sound.none" = "None";
+"sound.rain" = "Rain";
+"sound.cafe" = "Café";
+"sound.white_noise" = "White Noise";
+"sound.brown_noise" = "Brown Noise";
+"sound.forest" = "Forest";
+"sound.lofi" = "Lo-Fi Beats";
+"sound.fireplace" = "Fireplace";
+"sound.ocean" = "Ocean";
+"sound.library" = "Library";
+"sound.deep_space" = "Deep Space";
+"sound.wind" = "Wind";
+
+/* Energy Confirm Overlay */
+"energy.confirm.continue" = "Continue →";
+"energy.confirm.suggested" = "FlowState suggests";
+"energy.confirm.full_session" = "Full session 💪";
+"energy.confirm.instead" = "instead of";
+"energy.confirm.auto_start" = "Auto-starts in %ds";
+"energy.confirm.start" = "Start %@";
+"energy.confirm.keep_original" = "Keep original %@";
+
+/* Mode Selector */
+"mode_selector.title" = "Choose Mode";
+
+/* Notifications */
+"notif.session_end.title" = "Time for a break! ☕";
+"notif.session_end.body" = "You've completed a focus session. Great work!";
+"notif.session_end.body_task" = "Done with \"%@\". Take a well-earned break.";
+"notif.break_reminder.title" = "Break's almost over";
+"notif.break_reminder.body" = "You've rested for %d minutes. Ready to dive back in?";
+"notif.break_end.title" = "Break's over! 💪";
+"notif.break_end.body" = "Time to get back to work. You've got this!";
