@@ -1,7 +1,7 @@
 # FlowState — iOS Setup Guide
 
-**Author:** Nguyễn Trần Tiến Phúc  
-**Platform:** iOS 16+ | Swift 5.9 | Xcode 15+  
+**Author:** Võ Quang Phúc  
+**Platform:** iOS 17+ | Swift 5.9 | Xcode 15+  
 **Bundle ID:** `com.flowstate.app`
 
 ---
